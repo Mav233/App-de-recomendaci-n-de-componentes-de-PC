@@ -3,13 +3,14 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+load_dotenv(dotenv_path='/app/.env')
 
-if not api_key:
-    st.error("API Key no encontrada. Asegúrate de configurarla en el archivo .env.")
+api_key = os.getenv('GEMINI_API_KEY')
+
+if api_key is None:
+    raise ValueError("API Key no encontrada. Asegúrate de configurarla en el archivo .env")
 else:
-    genai.configure(api_key=api_key)
+    print("API Key cargada correctamente")
 
 def load_css():
     try:
