@@ -19,6 +19,7 @@ def load_css():
         pass
 load_css()
 
+
 st.title("Expansión Game: Meta Visión")
 st.markdown("""
 ### Asistente IA para la selección de componentes de computación
