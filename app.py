@@ -2,15 +2,20 @@ import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
-load_dotenv(dotenv_path='/app/.env')
+load_dotenv ()
 
-api_key = os.getenv('GEMINI_API_KEY')
+import streamlit as st
+api_key = st.secrets["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else os.getenv("GEMINI_API_KEY")
 
-if api_key is None:
-    raise ValueError("API Key no encontrada. Asegúrate de configurarla en el archivo .env")
+if not api_key:
+    st.error("API Key no encontrada. Configúrala en Streamlit Secrets o en un archivo .env.")
 else:
-    print("API Key cargada correctamente")
+    st.success("✅ API Key cargada correctamente")
+
+
+
 
 def load_css():
     try:
