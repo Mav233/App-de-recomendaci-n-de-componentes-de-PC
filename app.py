@@ -16,7 +16,6 @@ else:
 
 
 
-
 def load_css():
     try:
         with open("styles.css") as f:
